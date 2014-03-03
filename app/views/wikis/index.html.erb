@@ -1,0 +1,21 @@
+
+
+
+  <h1>Wikis</h1>
+
+   
+  <% @wikis.each  do |wiki| %>
+  
+  <%= wiki.title %>
+  <%= wiki.body %>
+   
+  <%= link_to 'Delete', wiki, method: :delete, remote: true, class: 'btn-sm btn-danger' %>
+    <%= link_to 'Show', show_wiki_path(wiki) %>
+    <%= link_to 'Edit', edit_wiki_path(wiki) %>
+    
+
+  <% end %> 
+    
+    <%= link_to 'New Wiki ', new_wiki_path %>
+
+
