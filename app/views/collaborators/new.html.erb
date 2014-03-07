@@ -1,0 +1,40 @@
+
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+  <h1> Add Colaborators to the Wiki </h1>
+      
+<table class="table">
+<thead>
+    <tr>
+      <th> Username</th>
+      <th> Email</th>
+      <th> Select Collaborators</th>
+    </tr>
+  </thead>
+
+  <tbody>
+   
+      <% @users.each  do |user| %>
+      <td><%= user.username %></td>
+      <td><%= user.email %></td>
+      <td>
+        <%= form_for [@wiki, Collaborator.new] do |f| %>
+          <%= f.hidden_field :user_id, :value => user.id %>
+          <% unless @wiki.collaborators.pluck("user_id").include? user.id %>
+            <%= f.submit "Add as collaborator", class: 'btn'  %>          
+          <% end %>
+        <% end %>
+        <% if @wiki.collaborators.pluck("user_id").include? user.id %>
+        <% c = Collaborator.where(:user_id => user.id, :wiki_id => @wiki.id).last %>
+        <%= button_to 'Delete collaborator', wiki_collaborator_path(@wiki, c), :method => 'delete', :confirm => 'Are you sure?', class: 'btn btn-danger'  %>
+      <% end %>
+      </td>  
+  </tbody>
+    </div>
+  </div> 
+  <% end %> 
+  </table>
+</div>
+</div>
+

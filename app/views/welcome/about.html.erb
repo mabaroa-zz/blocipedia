@@ -1,2 +1,29 @@
-<h1>Welcome#about</h1>
-<p>Find me in app/views/welcome/about.html.erb</p>
+<div class="page-header">
+  <center><h1>Blocipedia: Social, Markdown Wikis</h1></center>
+</div>
+
+  <div class="hero-unit">
+    <p class="lead">Two minds are better than one.</p>
+    <p>Blocipedia is better than both of them. If you're on a quest for knowledge, welcome home. We've got a wiki for every subject under the sun.</p>
+    <p>Check out the full list of wiki topics. Start contributing with your own page today.</p>
+    <a href="/wikis"><button type="submit" class="btn btn-primary btn-large">
+      Get Wik<i class="icon-ok"></i>d.
+    </button></a>
+  </div>
+ 
+  <div class="container">
+    <div class="span4 offset2">
+      <div class="mini-hero">
+        <h3>Free Plan</h3>
+        <p>Create as many public wikis as you want. Contribute to existing public wikis by adding your own pages.</p><br>
+        <center><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-warning" %></center>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="mini-hero">
+        <h3>Premium Plan</h3>
+        <p>Create private wikis and share them with a select group of collaborators.</p><br><br>
+        <center><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success" %></center>
+      </div>
+    </div>
+  </div>

@@ -1,32 +1,45 @@
 class WikisController < ApplicationController
+  
   respond_to :html, :js
   
   def index
     @wikis = Wiki.all
   end
 
+  def new
+    @wiki = Wiki.new
+  end
+
   def show
     @wiki = Wiki.find(params[:id])
   end
 
-  def new
-    @wiki = Wiki.new
-
+  def edit
+    @wiki = Wiki.find(params[:id])
   end
 
   def create
   @wiki = Wiki.new(wiki_params)
-  
-  if @wiki.save
-    flash[:notice] = "Your wiki  was saved."
-    redirect_to todolists_url 
-  else
-    flash[:error] = "There was an error saving your wiki. Please try again."
-    render :new
+    
+    if @wiki.save
+    render :action => 'new'
+    else
+    flash[:notice] = "Wiki succesfully created"
+    end
   end
+  
+  def update
+    @wiki = Wiki.find(params[:id])
+    
+    if @wiki.update_attributes(wiki_params)
+      redirect_to wikis_url, notice: "Wiki was saved successfully."
+    else
+      flash[:error] = "Error saving wiki. Please try again"
+      render :edit
+    end
   end
 
-def destroy
+  def destroy
     
     @wiki = Wiki.find(params[:id])
     @wiki.destroy
@@ -35,15 +48,14 @@ def destroy
     
     respond_to do |format|
       format.js 
-    end
-end
+  end
+  end
 
-  private
+private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body)
+    params.require(:wiki).permit(:title, :body, :private )
   end
-
-  def edit
-  end
+  
 end
+

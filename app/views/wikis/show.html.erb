@@ -1,2 +1,17 @@
 <h1>Wikis#show</h1>
 <p>Find me in app/views/wikis/show.html.erb</p>
+
+<h1><%= @wiki.title %></h1>
+
+<br>
+
+<p><%= @wiki.body %></p>
+
+<br>
+
+<%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-mini' %>
+
+
+<%# if current_user.premium? %>
+<%#Collaborators stuff here 
+<%# end %>

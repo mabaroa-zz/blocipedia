@@ -22,6 +22,11 @@ end
 gem 'devise'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'cancan'
+gem 'faker'
+gem 'stripe'
+gem 'redcarpet'
+
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

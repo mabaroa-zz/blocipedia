@@ -1,21 +1,42 @@
 
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+  <h1>My Wikis</h1>
+<table class="table">
+<thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th></th>
+    </tr>
+  </thead>
 
-
-  <h1>Wikis</h1>
-
+  <tbody>
    
-  <% @wikis.each  do |wiki| %>
-  
-  <%= wiki.title %>
-  <%= wiki.body %>
+      <% @wikis.each  do |wiki| %>
+      <%= tag :tr, id: "wiki-#{wiki.id}" %>
+      <td><%= link_to wiki.title, wiki  %></td>
+      <td><%= link_to 'Edit', edit_wiki_path(wiki) %></td>  
    
-  <%= link_to 'Delete', wiki, method: :delete, remote: true, class: 'btn-sm btn-danger' %>
-    <%= link_to 'Show', show_wiki_path(wiki) %>
-    <%= link_to 'Edit', edit_wiki_path(wiki) %>
-    
-
+      <td> <%= link_to 'Delete',wiki, method: :delete, remote: true, class: 'btn-sm btn-danger' 
+      %> </td>
+      <td><%= link_to 'Add Colaborators', new_wiki_collaborator_path(wiki) %></td> 
+    </div>
+  </div> 
   <% end %> 
-    
-    <%= link_to 'New Wiki ', new_wiki_path %>
+  </table>
+</div>
+</div>
+<br>
+
+ <%= link_to 'New Wiki ', new_wiki_path %>
 
 
+
+
+
+
+
+
+ 
